@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "ghostpost"
+version = "0.1.0"
+description = "SE-OCT-19-Q4  a django website where people can anonymously post Boasts or Roasts of whatever they want"
+authors = ["Kevin Blount <kvbchamp@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+django = "^3.1"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.5.3"
+autopep8 = "^1.5.4"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
