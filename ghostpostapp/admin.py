@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from ghostpostapp.models import RoastBoastModel
+
+admin.site.register(RoastBoastModel)
