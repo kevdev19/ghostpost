@@ -1,0 +1,9 @@
+<h1>Add Post</h1>
+
+<a href="{% url 'homepage' %}">Home</a>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Create Post!">
+</form>
