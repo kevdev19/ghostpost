@@ -1,1 +1,31 @@
 <h1>Roasts</h1>
+
+<div>
+<a href="{% url 'homepage' %}">Home</a>
+<a href="{% url 'sort' %}">Sort by Votes</a>
+<a href="{% url 'boasts' %}">Boasts</a>
+<a href="{% url 'roasts' %}">Roasts</a>
+<a href="{% url 'createpost' %}">Create Post</a>
+</div>
+
+{% for post in posts%}
+<div>
+    <h2>{{post.content}}</h2>
+
+    {% if post.is_boast == True %}
+            <h3>Boast</h3>
+        {% else %}
+            <h3>Roast</h3>
+    {% endif %}
+    <div>
+        <a href="{% url 'upvote' post.id %}">Upvote</a>
+        <a href="{% url 'downvote' post.id %}">Downvote</a>
+        </div>
+        <div>
+        <h3>{{ post.up_vote|add:post.down_vote }}</h3>
+        </div>
+    </div>
+    <p>Create date: {{post.submit_time}}</p>
+    <hr />
+</div>
+{% endfor %}

@@ -18,10 +18,12 @@
             <h3>Roast</h3>
     {% endif %}
     <div>
-        <p>Upvote: {{post.up_vote}}</p>
-    </div>
-    <div>
-        <p>Downvote: {{post.down_vote}}</p>
+        <a href="{% url 'upvote' post.id %}">Upvote</a>
+        <a href="{% url 'downvote' post.id %}">Downvote</a>
+        </div>
+        <div>
+        <h3>{{ post.up_vote|add:post.down_vote }}</h3>
+        </div>
     </div>
     <p>Create date: {{post.submit_time}}</p>
     <hr />

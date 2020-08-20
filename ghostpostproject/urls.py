@@ -22,10 +22,9 @@ urlpatterns = [
     path('', index_view, name='homepage'),
     path('boasts/', boast_view, name='boasts'),
     path('roasts/', roast_view, name='roasts'),
-    path('upvote/<int:id>/', up_vote_view, name='upvote'),
-    path('downvote/<int:id>/', down_vote_view, name='downvote'),
+    path('upvote/<int:upvote_id>/', up_vote_view, name='upvote'),
+    path('downvote/<int:downvote_id>/', down_vote_view, name='downvote'),
     path('sorted/', sort_view, name='sort'),
-    path('posts/<str:id>/', posts_view, name='posts'),
     path('createpost/', create_post_view, name='createpost'),
     path('admin/', admin.site.urls),
 ]
