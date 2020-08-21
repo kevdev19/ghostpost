@@ -4,7 +4,7 @@ from .forms import NewPostForm
 
 
 def index_view(request):
-    posts = RoastBoastModel.objects.all().order_by('submit_time')
+    posts = RoastBoastModel.objects.all().order_by('-submit_time')
     up_vote_total = request.POST.get('up_vote')
     return render(request, 'index.html', {"posts": posts, "up_vote_total": up_vote_total})
 
@@ -25,12 +25,14 @@ def create_post_view(request):
 
 
 def boast_view(request):
-    posts = RoastBoastModel.objects.filter(is_boast=True)
+    posts = RoastBoastModel.objects.filter(
+        is_boast=True).order_by('-submit_time')
     return render(request, 'boasts.html', {"posts": posts})
 
 
 def roast_view(request):
-    posts = RoastBoastModel.objects.filter(is_boast=False)
+    posts = RoastBoastModel.objects.filter(
+        is_boast=False).order_by('-submit_time')
     return render(request, 'roasts.html', {"posts": posts})
 
 
@@ -49,8 +51,8 @@ def down_vote_view(request, downvote_id):
 
 
 def sort_view(request):
-    pass
-
-
-def posts_view(request, post_id):
-    pass
+    # posts = RoastBoastModel.objects.all(
+    # ).order_by('-up_vote')
+    posts = sorted(RoastBoastModel.objects.all(),
+                   key=lambda p: p.up_vote + p.down_vote, reverse=True)
+    return render(request, 'index.html', {"posts": posts})
